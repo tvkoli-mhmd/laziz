@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:8000";
+const API_BASE = "laziz.runflare.run";
     let currentTags = [];
     let currentResults = [];
     let toastTimer = null;
