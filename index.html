@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RecipeAI — دستیار هوشمند آشپزی</title>
+      <link rel="stylesheet" href="style.css"/>
+      <link rel="stylesheet" href="fontawesome/css/fontawesome.css">
+      <link rel="stylesheet" href="fontawesome/css/solid.css">
+</head>
+
+<body>
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
+  <div class="wrapper">
+    <header>
+      <div class="logo-badge">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        قدرت گرفته از هوش مصنوعی
+      </div>
+      <h1>چه غذایی می‌خوای بپزی؟</h1>
+      <p>موادی که در خانه داری رو وارد کن تا بهترین دستورهای پخت رو برات پیدا کنم.</p>
+    </header>
+
+    <section class="search-section">
+      <div class="search-card">
+        <div class="tag-input-wrapper" id="tag-box">
+          <input type="text" id="ingredient-input" placeholder="نام ماده غذایی رو بنویس و اینتر بزن..." autocomplete="off" />
+        </div>
+        <div class="suggestions-list" id="suggestions"></div>
+
+<div class="search-bottom">
+
+  <div class="quick-tags">
+    <span style="font-size: 12px; color: var(--text-dim)">پیشنهاد:</span>
+    <button class="quick-tag" onclick="addQuickSet('chicken')">🍗 مرغ</button>
+    <button class="quick-tag" onclick="addQuickSet('pasta')">🍝 پاستا</button>
+    <button class="quick-tag" onclick="addQuickSet('vegetarian')">🥗 گیاهی</button>
+  </div>
+
+<div class="filters">
+
+<div class="filter-group">
+<span class="filter-title">نوع غذا</span>
+
+<button class="filter-chip active" data-filter="meal" data-value="">همه</button>
+<button class="filter-chip" data-filter="meal" data-value="main">اصلی</button>
+<button class="filter-chip" data-filter="meal" data-value="bakery">نان و شیرینی</button>
+<button class="filter-chip" data-filter="meal" data-value="appetizer">پیش غذا</button>
+<button class="filter-chip" data-filter="meal" data-value="dessert">دسر</button>
+<button class="filter-chip" data-filter="meal" data-value="condiment">چاشنی</button>
+<button class="filter-chip" data-filter="meal" data-value="breakfast">صبحانه</button>
+<button class="filter-chip" data-filter="meal" data-value="drink">نوشیدنی</button>
+
+</div>
+
+<div class="filter-group">
+<span class="filter-title">زمان پخت</span>
+
+<button class="filter-chip active" data-filter="time" data-value="">همه</button>
+<button class="filter-chip" data-filter="time" data-value="کمتر از 30 دقیقه">30-</button>
+<button class="filter-chip" data-filter="time" data-value="30 تا 60 دقیقه">30‑60</button>
+<button class="filter-chip" data-filter="time" data-value="60 تا 90 دقیقه">60‑90</button>
+<button class="filter-chip" data-filter="time" data-value="بیش 90دقیقه">90+</button>
+
+</div>
+
+<div class="filter-group">
+<span class="filter-title">سختی</span>
+
+<button class="filter-chip active" data-filter="difficulty" data-value="">همه</button>
+<button class="filter-chip" data-filter="difficulty" data-value="آسان">آسان</button>
+<button class="filter-chip" data-filter="difficulty" data-value="متوسط">متوسط</button>
+<button class="filter-chip" data-filter="difficulty" data-value="سخت">سخت</button>
+
+</div>
+
+</div>
+
+  <button class="search-btn" id="search-btn" onclick="searchRecipes()">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    جستجوی دستور پخت
+  </button>
+
+</div>
+
+      </div>
+    </section>
+
+    <section id="results-section">
+      <div class="loading-wrap" id="loading">
+        <i class="fa-solid fa-spinner fa-spin fa-2x" style="color: var(--accent)"></i>
+        <div style="margin-top: 10px">در حال جستجوی بهترین طعم‌ها...</div>
+      </div>
+      <div class="empty-state" id="empty-state" style="display:none; text-align: center; padding: 50px;">
+        <div style="font-size: 3rem">🧐</div>
+        <h3>دستور پختی پیدا نشد</h3>
+        <p>مواد بیشتری اضافه کن یا کلمات متفاوتی امتحان کن.</p>
+      </div>
+      <div id="results-container"></div>
+    </section>
+  </div>
+
+  <div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
+    <div class="modal" id="modal">
+      <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+      <div id="modal-inner"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"><span id="toast-msg"></span></div>
+
+<script src="script.js"></script>
+</body>
+</html>
